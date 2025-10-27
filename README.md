@@ -20,13 +20,19 @@ It also supports
 	make sure Path of Building Community (PoE2) is installed
 	and you have a build created/imported and saved
 
-	POB_INSTALL = r"C:\Users\username\AppData\Roaming\Path of Building Community (PoE2)" # < Path of Building path 
-	POB_PATH    = r"C:\Users\username\AppData\Roaming\Path of Building Community (PoE2)" # < Path of Building path
-	HARDCODED_BUILD = r"C:\Users\username\Documents\Path of Building (PoE2)\Builds\1\Shockburster Deadeye.xml" # < save file with the Build
-	MOD_RUNES_PATH = r"C:\Users\username\AppData\Roaming\Path of Building Community (PoE2)\Data\ModRunes.lua" # < Path of Building path to ModRunes.lua
-	MOD_ENCHANTS_PATH = r"C:\Users\username\AppData\Roaming\Path of Building Community (PoE2)\Data\QueryMods.lua" # < Path of Building path to QueryMods.lua
+	POB_INSTALL = r"C:\Users\username\AppData\Roaming\Path of Building Community (PoE2)" 
+	# < Path of Building path 
+	POB_PATH    = r"C:\Users\username\AppData\Roaming\Path of Building Community (PoE2)" 
+	# < Path of Building path
+	HARDCODED_BUILD = r"C:\Users\username\Documents\Path of Building (PoE2)\Builds\1\Shockburster Deadeye.xml" 
+	# < save file with the Build
+	MOD_RUNES_PATH = r"C:\Users\username\AppData\Roaming\Path of Building Community (PoE2)\Data\ModRunes.lua" 
+	# < Path of Building path to ModRunes.lua
+	MOD_ENCHANTS_PATH = r"C:\Users\username\AppData\Roaming\Path of Building Community (PoE2)\Data\QueryMods.lua" 
+	# < Path of Building path to QueryMods.lua
 
-	USER_POB_WRAPPER = r"C:\ChrometoPob2" # < were the repo is located on the harddrive 
+	USER_POB_WRAPPER = r"C:\ChrometoPob2" 
+	# < were the repo is located on the harddrive 
 
 3. go to C:\ChrometoPob2\server and start  > run.bat <
 	the first time should take a while it must install some python pakages
