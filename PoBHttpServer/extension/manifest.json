@@ -1,0 +1,56 @@
+{
+  "manifest_version": 3,
+  "name": "ChrometoPob2",
+  "version": "0.5",
+  "description": "Inline PoB impact for trade/trade2 via local FastAPI HTTP server",
+  "action": {
+    "default_title": "ChrometoPob2",
+    "default_icon": {
+      "16": "img/icon-16.png",
+      "32": "img/icon-32.png",
+      "128": "img/icon-128.png",
+      "335": "img/icon-335.png"
+    }
+  },
+  "permissions": [
+    "storage",
+    "tabs"
+  ],
+  "host_permissions": [
+    "http://127.0.0.1:5000/*",
+    "http://localhost:5000/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.pathofexile.com/trade/*",
+        "https://www.pathofexile.com/trade2/*"
+      ],
+      "js": [
+        "js/trade.js"
+      ],
+      "css": [
+        "css/style.css",
+        "css/trade.css"
+      ]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "js/trade-injected.js",
+        "img/icon-40.png",
+        "img/error-40.png"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ],
+  "icons": {
+    "16": "img/icon-16.png",
+    "32": "img/icon-32.png",
+    "128": "img/icon-128.png",
+    "335": "img/icon-335.png"
+  }
+}
