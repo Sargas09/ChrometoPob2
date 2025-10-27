@@ -9,7 +9,7 @@ This Chrome extension sends an item you select on <https://www.pathofexile.com/t
 - **Socket adjustments**
 - **Amulet enchants** (with preview)
 
-![PoE trading screenshot](example.jpg)
+![example](/example.jpg)
 ---
 
 ## Prerequisites
