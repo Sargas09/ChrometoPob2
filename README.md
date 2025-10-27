@@ -1,80 +1,103 @@
-# This is based on the idea of 
-# https://github.com/unremem/PoBTradeHelper 
-# ported to work for PoE2
+# PoB HTTP Server — Chrome Extension (PoE2)
 
-# PoB HTTP Server — Chrome Extension
+> Inspired by the idea of [unremem/PoBTradeHelper](https://github.com/unremem/PoBTradeHelper).  
+> **This project targets Path of Exile 2 and is not compatible with the original PoE1 tool.**
 
-This repository hosts a Chrome extension that sends searched  item on https://www.pathofexile.com/trade2 to a local **Path of Building (PoB) HTTP server** to calculate item impact.  
+This Chrome extension sends an item you select on <https://www.pathofexile.com/trade2> to a local **Path of Building (PoE2) HTTP server** and shows its **item impact**. It also supports:
 
-It also supports 
+- **Rune overrides**
+- **Socket adjustments**
+- **Amulet enchants** (with preview)
 
-- **rune overrides** 
+---
 
-- **socket adjustments**
+## Prerequisites
 
-- **amulet enchant** 
+- **Windows** (uses `pywin32` underneath)
+- **Path of Building Community (PoE2)** installed and at least one build saved
+- **Python 3.10+** (recommended)
+- Google **Chrome**
 
+---
 
-### Quick start (development)
+## Quick Start (Development)
 
-1. copy the Repo to C:\ChrometoPob2 
+### 1) Get the code
 
-2. change the paths in C:\ChrometoPob2\server\app.py and save 
+Clone or copy the project to a convenient folder, e.g.:
 
-	make sure Path of Building Community (PoE2) is installed
-	and you have a build created/imported and saved
+```
+C:\ChrometoPob2
+```
 
-    ## < Path of Building path
-	POB_INSTALL = r"C:\Users\username\AppData\Roaming\Path of Building Community (PoE2)" 
-	
-	POB_PATH    = r"C:\Users\username\AppData\Roaming\Path of Building Community (PoE2)" 
-    # < save file with the Build
-	HARDCODED_BUILD = r"C:\Users\username\Documents\Path of Building (PoE2)\Builds\1\Shockburster Deadeye.xml" 
-	# < Path of Building path to ModRunes.lua and QueryMods.lua
-	MOD_RUNES_PATH = r"C:\Users\username\AppData\Roaming\Path of Building Community (PoE2)\Data\ModRunes.lua" 
-	
-	MOD_ENCHANTS_PATH = r"C:\Users\username\AppData\Roaming\Path of Building Community (PoE2)\Data\QueryMods.lua" 
+### 2) Configure server paths
 
-    ### < were the repo is located on the harddrive
-	USER_POB_WRAPPER = r"C:\ChrometoPob2" 
-	
+Edit `C:\ChrometoPob2\server\app.py` and update the following paths. Replace `username` with your Windows user name.
 
-3. #go to C:\ChrometoPob2\server and start  > run.bat <
-	the first time should take a while it must install some python pakages
+```python
+# Path of Building installation (PoE2)
+POB_INSTALL = r"C:\Users\username\AppData\Roaming\Path of Building Community (PoE2)"
+POB_PATH    = r"C:\Users\username\AppData\Roaming\Path of Building Community (PoE2)"
 
-	it should look something like this
-	
-	-------------------------------------------------------------------------------------------------------
-	
-	Requirement already satisfied: pip in c:\chrometopob2\server\.venv\lib\site-packages (24.3.1)
-	Collecting pip
-	Downloading ...
-	Successfully installed ...
-	
-	[32mINFO←[0m:     Will watch for changes in these directories: ['C:\\ChrometoPob2\\server']
-	[32mINFO←[0m:     Uvicorn running on ←[1mhttp://127.0.0.1:5000←[0m (Press CTRL+C to quit)
-	[32mINFO←[0m:     Started reloader process [←[36m←[1m8292←[0m] using ←[36m←[1mStatReload←[0m
-	[32mINFO←[0m:     Started server process [←[36m16612←[0m]
-	[32mINFO←[0m:     Waiting for application startup.
-	[32mINFO←[0m:     Application startup complete.
+# A PoB build file to load by default (change to any saved build you have)
+HARDCODED_BUILD = r"C:\Users\username\Documents\Path of Building (PoE2)\Builds\1\Shockburster Deadeye.xml"
 
-    -------------------------------------------------------------------------------------------------------
+# Paths to PoB data files
+MOD_RUNES_PATH    = r"C:\Users\username\AppData\Roaming\Path of Building Community (PoE2)\Data\ModRunes.lua"
+MOD_ENCHANTS_PATH = r"C:\Users\username\AppData\Roaming\Path of Building Community (PoE2)\Data\QueryMods.lua"
 
+# Where this repo lives on your drive
+USER_POB_WRAPPER = r"C:\ChrometoPob2"
+```
 
+Make sure the directories and files exist on your machine.
 
-3. #Load the extension into Chrome (Developer Mode):
+### 3) Start the HTTP server
 
-   - Open `chrome://extensions`
-   - Toggle **Developer mode** (top-right)
-   - Click **Load unpacked** and select the folder that contains `manifest.json` ChrometoPob2\extension
-   
+Open a terminal and run:
 
+```
+C:\ChrometoPob2\server\run.bat
+```
 
+On first run, it will create a virtual environment and install dependencies. You should then see Uvicorn start, e.g.:
 
-2. #Open https://www.pathofexile.com/trade2 and use the extension panel.  
+```
+INFO:     Will watch for changes in these directories: ['C:\ChrometoPob2\server']
+INFO:     Uvicorn running on http://127.0.0.1:5000 (Press CTRL+C to quit)
+INFO:     Started reloader process [8292] using StatReload
+INFO:     Started server process [16612]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+```
 
-   
+### 4) Load the extension in Chrome
 
+1. Open `chrome://extensions`
+2. Enable **Developer mode** (top right)
+3. Click **Load unpacked**
+4. Select the folder that contains `manifest.json`, usually:  
+   `C:\ChrometoPob2\extension`
+
+### 5) Use it
+
+Open <https://www.pathofexile.com/trade2>, select an item, and use the extension panel to send the item to the local PoB server. The panel will show runes, sockets, the amulet enchant preview, and the calculated impact.
+
+---
+
+## Troubleshooting
+
+- **Server won’t start / missing files**: Double‑check the paths in `server/app.py`.
+- **Cannot connect from the extension**: Ensure the server is running on `http://127.0.0.1:5000` and not blocked by a firewall.
+- **PoB not detected**: Verify your PoB installation path and that your build file exists.
+- **Windows-only**: The server uses `pywin32`, so it currently targets Windows.
+
+---
 
 ## License
-MIT — see [LICENSE](LICENSE).
+
+MIT — see [LICENSE](./LICENSE).
+
+## Credits
+
+- Based on the idea of [unremem/PoBTradeHelper](https://github.com/unremem/PoBTradeHelper). Thanks for the inspiration!
