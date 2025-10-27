@@ -9,7 +9,7 @@ This Chrome extension sends an item you select on <https://www.pathofexile.com/t
 - **Socket adjustments**
 - **Amulet enchants** (with preview)
 
-![example](/example.jpg)
+![example](img/example.jpg)
 ---
 
 ## Prerequisites
