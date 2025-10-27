@@ -8,32 +8,34 @@ This repository hosts a Chrome extension that sends searched  item on https://ww
 
 It also supports 
 
-# **rune overrides** 
+- **rune overrides** 
 
-# **socket adjustments**
+- **socket adjustments**
 
-# **amulet enchant** 
+- **amulet enchant** 
 
 
-## Quick start (development)
+### Quick start (development)
 
-1. #copy the Repo to C:\ChrometoPob2 
+1. copy the Repo to C:\ChrometoPob2 
 
-2. #change the paths in C:\ChrometoPob2\server\app.py and save 
+2. change the paths in C:\ChrometoPob2\server\app.py and save 
 
 	make sure Path of Building Community (PoE2) is installed
 	and you have a build created/imported and saved
 
-    # < Path of Building path
-	POB_INSTALL = r"C:\Users\username\AppData\Roaming\Path of Building Community (PoE2)"  
+    ## < Path of Building path
+	POB_INSTALL = r"C:\Users\username\AppData\Roaming\Path of Building Community (PoE2)" 
+	
 	POB_PATH    = r"C:\Users\username\AppData\Roaming\Path of Building Community (PoE2)" 
     # < save file with the Build
 	HARDCODED_BUILD = r"C:\Users\username\Documents\Path of Building (PoE2)\Builds\1\Shockburster Deadeye.xml" 
 	# < Path of Building path to ModRunes.lua and QueryMods.lua
 	MOD_RUNES_PATH = r"C:\Users\username\AppData\Roaming\Path of Building Community (PoE2)\Data\ModRunes.lua" 
+	
 	MOD_ENCHANTS_PATH = r"C:\Users\username\AppData\Roaming\Path of Building Community (PoE2)\Data\QueryMods.lua" 
 
-    # < were the repo is located on the harddrive
+    ### < were the repo is located on the harddrive
 	USER_POB_WRAPPER = r"C:\ChrometoPob2" 
 	
 
